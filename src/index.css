@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    margin: auto;
+    width: 70%;
+}
+
+@media (max-width: 576px) {
+    .main-container {
+        width: 95%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .main-container {
+        width: 90%;
+    }
+}
