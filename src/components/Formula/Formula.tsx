@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import SaveIcon from '@mui/icons-material/Save';
 import { calculation } from "../../utils/calculation";
+import { simplifyFunctions } from "../../utils/simplifyFunctions";
 
 const Formula = ({ formulaItem }: any) => {
     const [formula, setFormula] = useState<string>("");
@@ -27,7 +28,6 @@ const Formula = ({ formulaItem }: any) => {
     // saved formula state from store
     const savedFormulas = useSelector((store: any) => store.formula.savedFormulas)
     const theme = useSelector((store: any) => store.theme)
-    console.log("theme:", theme)
 
     // method to call actions
     const dispatch = useDispatch();
@@ -54,41 +54,6 @@ const Formula = ({ formulaItem }: any) => {
         return formula.replace(/\^/g, "**");
     };
 
-    // Evaluate functions like sin, cos, log
-    const evaluateFunctions = (formula: string): string => {
-        const functionRegex = /(sin|cos|tan|log)\(([^)]+)\)/g;
-        return formula.replace(functionRegex, (_, func, innerExpr) => {
-            const evaluatedInner = calculation(innerExpr); // Recursively calculate the inner expression
-            let radians: number;
-
-            if (func === "sin" || func === "cos" || func === "tan") {
-                radians = (Math.PI / 180) * evaluatedInner; // Convert degrees to radians
-            }
-
-            switch (func) {
-                case "sin":
-                    return Math.sin(radians!).toFixed(10); // Ensure precision
-                case "cos":
-                    const cosValue = Math.cos(radians!);
-                    return Math.abs(cosValue) < 1e-10 ? "0" : cosValue.toFixed(10); // Handle floating-point precision
-                case "tan":
-                    if (Math.abs(radians! % Math.PI - Math.PI / 2) < 1e-10) {
-                        throw new Error("Tan is undefined for odd multiples of 90 degrees.");
-                    }
-                    return Math.tan(radians!).toFixed(10);
-                case "log":
-                    if (evaluatedInner <= 0) {
-                        throw new Error("Logarithm of non-positive numbers is undefined.");
-                    }
-                    return Math.log10(evaluatedInner).toString(); // Use Math.log10 for base-10 logarithm
-                default:
-                    throw new Error(`Unknown function: ${func}`);
-            }
-        });
-    };
-
-
-
     // function to handle BODMAS and ** for exponentiation
     const calculateFormula = (formula: string, variables: Record<string, number>): number => {
         try {
@@ -98,7 +63,7 @@ const Formula = ({ formulaItem }: any) => {
                 const regExp = new RegExp(`\\b${key}\\b`, "g");
                 expr = expr.replace(regExp, value.toString());
             }
-            expr = evaluateFunctions(expr); // Evaluate functions like sin, cos, log
+            expr = simplifyFunctions(expr);
             return calculation(expr);
         } catch (error) {
             throw new Error("Invalid formula or undefined variables.");
@@ -133,72 +98,6 @@ const Formula = ({ formulaItem }: any) => {
             [key]: value,
         });
     };
-
-    // // Custom evaluate function (handles BODMAS and precedence)
-    // const calculation = (expression: string): number => {
-    //     const operators = ["+", "-", "*", "/", "**"];
-    //     const precedence = (op: string) => {
-    //         if (op === "+" || op === "-") return 1;
-    //         if (op === "*" || op === "/") return 2;
-    //         if (op === "**") return 3; // Exponentiation has higher precedence
-    //         return 0;
-    //     };
-
-    //     const applyOperator = (values: number[], ops: string[]) => {
-    //         const b = values.pop()!;
-    //         const a = values.pop()!;
-    //         const op = ops.pop()!;
-    //         switch (op) {
-    //             case "+":
-    //                 values.push(a + b);
-    //                 break;
-    //             case "-":
-    //                 values.push(a - b);
-    //                 break;
-    //             case "*":
-    //                 values.push(a * b);
-    //                 break;
-    //             case "/":
-    //                 values.push(a / b);
-    //                 break;
-    //             case "**":
-    //                 values.push(Math.pow(a, b));
-    //                 break;
-    //             default:
-    //                 throw new Error("Unknown operator");
-    //         }
-    //     };
-
-    //     const tokens = expression.match(/[0-9.]+|[a-zA-Z]+|[-+*/^()]/g) || [];
-    //     const values: number[] = [];
-    //     const ops: string[] = [];
-
-    //     tokens.forEach((token) => {
-    //         if (/\d+(\.\d+)?/.test(token)) {
-    //             values.push(parseFloat(token));
-    //         } else if (/[a-zA-Z]+/.test(token)) {
-    //             values.push(parseFloat(token));
-    //         } else if (operators.includes(token)) {
-    //             while (ops.length && precedence(ops[ops.length - 1]) >= precedence(token)) {
-    //                 applyOperator(values, ops);
-    //             }
-    //             ops.push(token);
-    //         } else if (token === "(") {
-    //             ops.push(token);
-    //         } else if (token === ")") {
-    //             while (ops.length && ops[ops.length - 1] !== "(") {
-    //                 applyOperator(values, ops);
-    //             }
-    //             ops.pop();
-    //         }
-    //     });
-
-    //     while (ops.length) {
-    //         applyOperator(values, ops);
-    //     }
-
-    //     return values[0];
-    // };
 
     // find variables when formula inside field change
     useEffect(() => {

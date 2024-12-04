@@ -1,10 +1,10 @@
- // Custom evaluate function (handles BODMAS and precedence)
+ // calculation function
  export const calculation = (expression: string): number => {
     const operators = ["+", "-", "*", "/", "**"];
     const precedence = (op: string) => {
         if (op === "+" || op === "-") return 1;
         if (op === "*" || op === "/") return 2;
-        if (op === "**") return 3; // Exponentiation has higher precedence
+        if (op === "**") return 3;
         return 0;
     };
 

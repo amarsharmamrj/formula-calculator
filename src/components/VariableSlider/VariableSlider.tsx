@@ -8,7 +8,7 @@ const VariableSilder = ({variable, variables, handleVariableChange}:any) => {
                 value={variables[variable]}
                 min={0}
                 max={10}
-                step={1}
+                step={0.1}
                 onChange={(e, value) => handleVariableChange(variable, value as number)}
                 valueLabelDisplay="auto"
                 valueLabelFormat={(value) => `${value}`}
