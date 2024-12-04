@@ -37,6 +37,7 @@ This is a formula calculator app, to perform different type of operations and ge
 - Redux-toolkit
 - Typescript
 - Javascript
+- local storage
 - Material UI
 - HTML
 - CSS

@@ -1,4 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IFormula } from "../../interfaces/formula.interface";
+
+const syncSavedFormulasWithLocalStorage = (data: IFormula[]) => {
+    const strData = JSON.stringify(data)
+    window.localStorage.setItem('savedFormulas', strData)
+}
 
 const formulaSlice = createSlice({
     name: 'formula',
@@ -23,10 +29,23 @@ const formulaSlice = createSlice({
                 formula: action.payload.formula
             }]
             state = { ...state, savedFormulas: newFormulas }
+            syncSavedFormulasWithLocalStorage(newFormulas)
+            return state
+        },
+        removeSavedFormula(state: any, action: PayloadAction<any>) {
+            if (state.savedFormulas.length > 1) {
+                let newFormulas = state?.savedFormulas?.filter((item: any) => item.id !== action.payload)
+                state = { ...state, savedFormulas: newFormulas }
+                syncSavedFormulasWithLocalStorage(newFormulas)
+            }
+            return state
+        },
+        syncFormulasFromLocalStorage(state: any, action: PayloadAction<any>) {
+            state = { ...state, savedFormulas: action.payload }
             return state
         },
     }
 })
 
-const { addNewFormula, removeFormula, saveFormula } = formulaSlice.actions
-export { addNewFormula, removeFormula, saveFormula, formulaSlice }
+const { addNewFormula, removeFormula, syncFormulasFromLocalStorage, removeSavedFormula, saveFormula } = formulaSlice.actions
+export { addNewFormula, removeFormula, saveFormula, syncFormulasFromLocalStorage, removeSavedFormula, formulaSlice }

@@ -158,6 +158,7 @@ const Formula = ({ formulaItem }: any) => {
                 value={formula}
                 onChange={(e) => handleFormulaChange(e.target.value)}
                 margin="normal"
+                placeholder="enter formula like a+b*2"
             />
 
             {/* Display result */}
