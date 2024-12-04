@@ -17,6 +17,7 @@
 
 .darkInput{
     border: 1px solid #1976d2 !important;
+    border-radius: 5px 5px 0 5px;
     color: white !important;
 }
 

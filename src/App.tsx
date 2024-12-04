@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
-import Calculator from './components/Calculator'
-import SavedFormulas from './components/SavedFormulas'
+import Calculator from './components/Calculator/Calculator'
+import SavedFormulas from './components/SavedFormulas/SavedFormulas'
 import Navbar from './components/Navbar/Navbar'
 import './App.css'
 

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
-import { IFormula } from '../interfaces/formula.interface'
-import Formula from './Formula'
+import { IFormula } from '../../interfaces/formula.interface'
+import Formula from '../Formula/Formula'
 import { useEffect, useRef, useState } from 'react'
 import { Zoom } from '@mui/material'
 

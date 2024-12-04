@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import styles from './SavedFormulas.module.css'
-import { IFormula } from '../interfaces/formula.interface'
-import SavedFormulaItem from './SavedFormulaItem'
+import { IFormula } from '../../interfaces/formula.interface'
+import SavedFormulaItem from '../SavedFormulaItem/SavedFormulaItem'
 
 
 const SavedFormulas = () => {

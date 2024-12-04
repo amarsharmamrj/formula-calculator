@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Formula Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a formula calculator app, to perform different type of operations and get the result.
 
-Currently, two official plugins are available:
+### Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Formula can be entered by using addition, substraction, multiplication, division etc. 
+- We can also use log, sin, cos, tan to get the result. 
+- Dynamic variables generator
+- Real-time result
+- Display latex version of the formula
+- Full responsive to work on all screen sizes.
+- Error handling for invalid formula
 
-## Expanding the ESLint configuration
+### Additional Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- We can save formula
+- We can use log, sin, cos, tan
+- Dark and light mode UI
+- Help dialog to get basic user guide
 
-- Configure the top-level `parserOptions` property like this:
 
+### How to use?
+
+- Enter your formula in input field 
+- If it does not have any variable then the result will be visilar just below the input field after '=' sign
+- If the input formula has variable then slider will be created for each variable to select value for variable
+- The result will be visilar below the input field in real time when we can changing the value of variables.
+- We can also save the formulas by using 'SAVE FORMULA' button, the saved formulas which will be visilar on the right side.
+- We can create new formula by using the 'ADD FORMULA' button.
+- We can remove the formaula field by clicking on 'X' button.
+- Typescript
+
+### Technologies/tools used
+
+- React.js
+- Redux-toolkit
+- Typescript
+- Javascript
+- Material UI
+- HTML
+- CSS
+- Vite
+
+### How to run the application locally
+
+- Clone the repo on local machine from https://github.com/amarsharmamrj/formula-calculator.git
+- Open the project in terminal or any editor like vscode etc.
+- Go inside the main folder
+- Run the below command: 
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
+- After installation of packages run below command:
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+npm run dev
 ```
+- Access the application on 'http://localhost:5173/'

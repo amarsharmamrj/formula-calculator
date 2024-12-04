@@ -1,5 +1,5 @@
-// Custom evaluate function (handles BODMAS and precedence)
-export const calculation = (expression: string): number => {
+ // Custom evaluate function (handles BODMAS and precedence)
+ export const calculation = (expression: string): number => {
     const operators = ["+", "-", "*", "/", "**"];
     const precedence = (op: string) => {
         if (op === "+" || op === "-") return 1;
@@ -33,8 +33,7 @@ export const calculation = (expression: string): number => {
         }
     };
 
-    // const tokens = expression.match(/[0-9.]+|[a-zA-Z]+|[-+*/^()]/g) || [];
-    const tokens = expression.match(/[0-9.]+|[a-zA-Z]+|[-+*/()^]+|\*\*/g) || [];
+    const tokens = expression.match(/[0-9.]+|[a-zA-Z]+|[-+*/^()]/g) || [];
     const values: number[] = [];
     const ops: string[] = [];
 
@@ -42,7 +41,6 @@ export const calculation = (expression: string): number => {
         if (/\d+(\.\d+)?/.test(token)) {
             values.push(parseFloat(token));
         } else if (/[a-zA-Z]+/.test(token)) {
-            // If variable is detected, it must be replaced with its value
             values.push(parseFloat(token));
         } else if (operators.includes(token)) {
             while (ops.length && precedence(ops[ops.length - 1]) >= precedence(token)) {
