@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
@@ -6,6 +6,20 @@ body{
 .main-container {
     margin: auto;
     width: 70%;
+}
+
+.MuiFormControl-root {
+    margin-bottom: 0 !important;
+}
+
+
+.MuiOutlinedInput-root {
+    border-radius: 7px 7px 0 7px;
+    /* border: 1px solid white; */
+}
+
+.MuiModal-backdrop {
+    background-color: rgb(104 104 104 / 50%) !important;
 }
 
 @media (max-width: 576px) {

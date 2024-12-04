@@ -1,0 +1,17 @@
+.helpButton {
+    background-color: white !important;
+    padding: 0.2rem 1.5rem !important;
+    letter-spacing: 2px !important;
+    color: blue !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin-right: 1rem !important;
+}
+
+.darkMode {
+    margin: 0 2.5rem 0  0!important;
+}
+
+.darkMode svg{
+    color: white;
+}

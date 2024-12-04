@@ -1,9 +1,30 @@
-.formula {
+.formula.light {
     font-size: 1.4rem;
     margin: 2rem 0;
     border-radius: 0.5rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background-color: white;
 }
+
+.formula.dark {
+    font-size: 1.4rem;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    /* box-shadow: 0px 1px 5px 1px rgb(238 236 236), 0 3px 6px rgb(235 233 233 / 42%); */
+    background-color: #303030;
+}
+
+
+.darkInput{
+    border: 1px solid #1976d2 !important;
+    color: white !important;
+}
+
+.darkInput input{
+    color: white !important;
+}
+
+
 
 .latex {
     float: right;
@@ -17,10 +38,24 @@
     justify-content: flex-end;
 }
 
-.result p {
+.result.light p {
     font-weight: 600;
     font-size: 1.6rem;
     margin: 0 0 1rem 0;
+    border: 1px solid grey;
+    border-radius: 0px 0px 7px 7px;
+    padding: 0.2rem 1.5rem;
+    background-color: rgb(207, 229, 249);
+}
+
+.result.dark p {
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: 0 0 1rem 0;
+    border: 1px solid grey;
+    border-radius: 0px 0px 7px 7px;
+    padding: 0.2rem 1.5rem;
+    /* background-color: rgb(207, 229, 249); */
 }
 
 .button {
@@ -28,27 +63,28 @@
     justify-content: end;
     flex-direction: row-reverse;
     column-gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .button button {
     margin-bottom: 1rem;
 }
 
-.closeButton{
-   display: flex;
-   justify-content: flex-end;
+.closeButton {
+    display: flex;
+    justify-content: flex-end;
 }
 
-.closeButton button{
+.closeButton button {
     padding: 0.5rem 0;
 }
 
 
-.closeButton button svg{
+.closeButton button svg {
     font-size: 2rem;
     color: #bd0303
 }
 
-.button svg{
+.button svg {
     margin-right: 0.5rem;
 }

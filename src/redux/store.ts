@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { formulaSlice } from "./slice/formulaSlice";
-import { IFormula } from "../interfaces/formula.interface";
+import { themeSlice } from "./slice/themeSlice";
 
 const store: any = configureStore({
     reducer: {
-        formula: formulaSlice.reducer 
+        formula: formulaSlice.reducer,
+        theme: themeSlice.reducer
     }
 })
 

@@ -17,7 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import SaveIcon from '@mui/icons-material/Save';
 
-const Formula = ({ formulaItem }: any) => {
+const FormulaWithLog = ({ formulaItem }: any) => {
     const [formula, setFormula] = useState<string>("");
     const [variables, setVariables] = useState<Record<string, number>>({});
     const [result, setResult] = useState<number | null>(null);
@@ -309,4 +309,4 @@ const Formula = ({ formulaItem }: any) => {
     );
 };
 
-export default Formula;
+export default FormulaWithLog;
