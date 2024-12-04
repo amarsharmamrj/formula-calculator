@@ -15,11 +15,14 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import SaveIcon from '@mui/icons-material/Save';
 
-const Formula1 = ({ formulaItem }: any) => {
+const Formula = ({ formulaItem }: any) => {
     const [formula, setFormula] = useState<string>("");
     const [variables, setVariables] = useState<Record<string, number>>({});
     const [result, setResult] = useState<number | null>(null);
     const [error, setError] = useState<string | null>(null);
+
+    const [checked, setChecked] = useState(true)
+
 
     const savedFormulas = useSelector((store: any) => store.formula.savedFormulas)
     console.log("SavedFormulas:", savedFormulas)
@@ -265,4 +268,4 @@ const Formula1 = ({ formulaItem }: any) => {
     );
 };
 
-export default Formula1;
+export default Formula;
