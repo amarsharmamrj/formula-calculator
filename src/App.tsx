@@ -9,7 +9,7 @@ function App() {
     <>
       <div>
         {/* navbar */}
-        <Navbar />
+        <Navbar /> 
 
         <div className="main-container">
           <Grid container>
