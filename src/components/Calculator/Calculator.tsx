@@ -4,7 +4,7 @@ import Formula from '../Formula/Formula'
 import { useEffect, useRef, useState } from 'react'
 import { Zoom } from '@mui/material'
 
-const Calculator = () => {
+const Calculator = () => { 
     const [checked, setChecked] = useState(true) 
 
     const formulaElement: any = useRef()  
