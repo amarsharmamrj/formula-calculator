@@ -7,7 +7,7 @@ import { Zoom } from '@mui/material'
 const Calculator = () => {
     const [checked, setChecked] = useState(true) 
 
-    const formulaElement: any = useRef()
+    const formulaElement: any = useRef() 
 
     const formulas = useSelector((store: any) => store.formula.formulas)
 
