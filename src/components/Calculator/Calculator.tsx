@@ -15,7 +15,7 @@ const Calculator = () => {
         formulaElement?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
         setChecked(true)
-        return () => {
+        return () => { 
             setChecked(false)
         }
     })
